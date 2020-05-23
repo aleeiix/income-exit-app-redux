@@ -2,19 +2,11 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-income-exit',
-  template: `
-    <p>
-      income-exit works!
-    </p>
-  `,
-  styles: [
-  ]
+  templateUrl: './income-exit.component.html',
+  styles: [],
 })
 export class IncomeExitComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
