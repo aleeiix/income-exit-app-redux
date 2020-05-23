@@ -1,13 +1,20 @@
+import '@angular/fire/firestore';
+
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { User } from './../models/user.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private _fireAuth: AngularFireAuth) {}
+  constructor(
+    private _fireAuth: AngularFireAuth,
+    private _firestore: AngularFirestore
+  ) {}
 
   initAuthListener(): void {
     this._fireAuth.authState.subscribe((user) => {
@@ -15,11 +22,13 @@ export class AuthService {
     });
   }
 
-  register(
-    email: string,
-    password: string
-  ): Promise<firebase.auth.UserCredential> {
-    return this._fireAuth.createUserWithEmailAndPassword(email, password);
+  register(name: string, email: string, password: string): Promise<void> {
+    return this._fireAuth
+      .createUserWithEmailAndPassword(email, password)
+      .then(({ user }) => {
+        const newUser = new User(user.uid, name, user.email);
+        return this._firestore.doc(`${user.uid}/user`).set({ ...newUser });
+      });
   }
 
   login(

@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
     this.registerForm = this._formBuilder.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required, Validators.maxLength(6)],
+      password: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
 
@@ -40,7 +40,7 @@ export class RegisterComponent implements OnInit {
 
     const { name, email, password } = this.registerForm.value;
     this._authService
-      .register(email, password)
+      .register(name, email, password)
       .then((credentials) => {
         console.log(credentials);
         Swal.close();
