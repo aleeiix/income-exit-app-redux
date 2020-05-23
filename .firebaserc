@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "income-exit-app": {
+      "hosting": {
+        "income-exit-app-redux": [
+          "income-exit-app"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "income-exit-app-redux",
+      "public": "dist/income-exit-app-redux",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}
