@@ -56,7 +56,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this._authService
       .register(name, email, password)
       .then((credentials) => {
-        console.log(credentials);
         this._store.dispatch(uiActions.stopLoading());
         // Swal.close();
         this._router.navigate(['/']);
