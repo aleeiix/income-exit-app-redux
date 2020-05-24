@@ -8,4 +8,8 @@ export class User {
     this.name = name;
     this.email = email;
   }
+
+  static fromFirebase({ uid, name, email }) {
+    return new User(uid, name, email);
+  }
 }

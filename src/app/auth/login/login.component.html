@@ -52,6 +52,7 @@
                 class="btn btn-primary submit-btn btn-block"
                 type="submit"
                 [disabled]="loginForm.invalid"
+                [ladda]="isLoading"
               >
                 Login
               </button>
@@ -71,5 +72,4 @@
       </div>
     </div>
   </div>
-  <!-- content-wrapper ends -->
 </div>
