@@ -15,11 +15,27 @@
           </thead>
 
           <tbody>
-            <tr>
-              <td>Descripción</td>
-              <td>Monto</td>
-              <td>Tipo</td>
-              <td>acciones</td>
+            <tr *ngFor="let incomeExit of incomeExits | ordenIncome">
+              <td>{{ incomeExit.description }}</td>
+              <td>{{ incomeExit.quantity | currency }}</td>
+              <td
+                [class.text-success]="
+                  incomeExit.type === incomeExitTypeEnum.INCOME
+                "
+                [class.text-danger]="
+                  incomeExit.type === incomeExitTypeEnum.EXIT
+                "
+              >
+                {{ incomeExit.type }}
+              </td>
+              <td>
+                <button
+                  class="btn btn-danger btn-sm"
+                  (click)="remove(incomeExit.uid)"
+                >
+                  <i class="fa fa-trash"></i>
+                </button>
+              </td>
             </tr>
           </tbody>
         </table>

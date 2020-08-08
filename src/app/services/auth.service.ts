@@ -9,6 +9,7 @@ import { map } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { AppState } from '../app.reducer';
 import * as authActions from './../auth/auth.actions';
+import * as incomeExitActions from './../income-exit/income-exit.actions';
 
 import { User } from './../models/user.model';
 
@@ -46,6 +47,7 @@ export class AuthService {
           this._firestoreUser.unsubscribe();
         }
         this._store.dispatch(authActions.unSetUser());
+        this._store.dispatch(incomeExitActions.unsetItems());
       }
     });
   }

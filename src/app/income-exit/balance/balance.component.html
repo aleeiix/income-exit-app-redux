@@ -1,0 +1,43 @@
+<div class="row m-5">
+  <div class="col-12">
+    <div class="card cardstatistics">
+      <div class="card-body">
+        <div class="clearfix">
+          <div class="float-left">
+            <i class="fa fa-building text-info icon-lg"></i>
+          </div>
+
+          <div class="float-right">
+            <p class="mb-0 text-right">Differences</p>
+            <div class="fluid-container">
+              <h3
+                [class.text-success]="totalIncome - totalExit > 0"
+                [class.text-danger]="totalIncome - totalExit < 0"
+                class="font-weight-medium text-right mb-0"
+              >
+                {{ totalIncome - totalExit | currency }}
+              </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 p-5" *ngIf="totalIncome > 0 || totalExit > 0">
+    <div class="card card-statistics">
+      <div class="card-body">
+        <h1 class="card-title">Graph</h1>
+        <div style="display: block;">
+          <canvas
+            baseChart
+            [data]="[totalIncome, totalExit]"
+            [labels]="doughnutChartLabels"
+            [chartType]="doughnutChartType"
+          >
+          </canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

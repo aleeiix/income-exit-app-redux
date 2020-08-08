@@ -10,6 +10,7 @@ import { StoreModule } from '@ngrx/store';
 import { appReducers } from './app.reducer';
 
 import { LaddaModule } from 'angular2-ladda';
+import { ChartsModule } from 'ng2-charts';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,6 +25,8 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 
 import { environment } from './../environments/environment';
+import { OrdenIncomePipe } from './pipes/orden-income.pipe';
+import { BalanceComponent } from './income-exit/balance/balance.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +40,8 @@ import { environment } from './../environments/environment';
     FooterComponent,
     NavbarComponent,
     SidebarComponent,
+    OrdenIncomePipe,
+    BalanceComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,6 +58,7 @@ import { environment } from './../environments/environment';
     LaddaModule.forRoot({
       style: 'zoom-in',
     }),
+    ChartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

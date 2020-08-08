@@ -1,7 +1,12 @@
 import '@angular/fire/firestore';
 
 import { Injectable } from '@angular/core';
-import { AngularFirestore, DocumentReference } from '@angular/fire/firestore';
+import { map } from 'rxjs/operators';
+import {
+  AngularFirestore,
+  DocumentReference,
+  DocumentChangeAction,
+} from '@angular/fire/firestore';
 import { IncomeExit } from '../models/income-exit.model';
 import { AuthService } from './auth.service';
 
@@ -15,9 +20,30 @@ export class IncomeExitService {
   ) {}
 
   createIncomeExit(incomeExit: IncomeExit): Promise<DocumentReference> {
+    delete incomeExit.uid;
     return this._firestore
       .doc(`${this._authService.user.uid}/income-exit`)
       .collection('items')
       .add({ ...incomeExit });
+  }
+
+  initIcomeExitListener(userId: string) {
+    return this._firestore
+      .collection(`${userId}/income-exit/items`)
+      .snapshotChanges()
+      .pipe(
+        map((snapshots) =>
+          snapshots.map((snapshot: DocumentChangeAction<IncomeExit>) => ({
+            uid: snapshot.payload.doc.id,
+            ...snapshot.payload.doc.data(),
+          }))
+        )
+      );
+  }
+
+  removeIncomeExit(itemId: string): Promise<void> {
+    return this._firestore
+      .doc(`${this._authService.user.uid}/income-exit/items/${itemId}`)
+      .delete();
   }
 }

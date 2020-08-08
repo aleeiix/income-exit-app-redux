@@ -6,9 +6,8 @@
           <div class="profile-image">
             <img src="assets/images/faces/face1.jpg" alt="profile image" />
           </div>
-
           <div class="text-wrapper">
-            <p class="profile-name">Cristobal Colón</p>
+            <p class="profile-name">{{ name }}</p>
             <div>
               <small class="designation text-muted">Gerente</small>
             </div>
@@ -27,21 +26,21 @@
     <li class="nav-item">
       <a class="nav-link" routerLink="/income-exit">
         <i class="menu-icon fa fa-clipboard-list"></i>
-        <span class="menu-title">Ingresos y Egresos</span>
+        <span class="menu-title">Income & Exit</span>
       </a>
     </li>
 
     <li class="nav-item">
       <a class="nav-link" routerLink="/detail">
         <i class="menu-icon fa fa-table"></i>
-        <span class="menu-title">Detalle</span>
+        <span class="menu-title">Detail</span>
       </a>
     </li>
 
     <li class="nav-item">
       <a class="nav-link cursor" (click)="logout()">
         <i class="menu-icon fa fa-sign-out-alt"></i>
-        <span class="menu-title">Cerrar sesión</span>
+        <span class="menu-title">Logout</span>
       </a>
     </li>
   </ul>
