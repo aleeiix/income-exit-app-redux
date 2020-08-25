@@ -6,11 +6,11 @@ import * as incomeExit from './income-exit/income-exit.reducer';
 export interface AppState {
   ui: ui.State;
   auth: auth.State;
-  incomeExit: incomeExit.State;
+  // incomeExit: incomeExit.State;
 }
 
 export const appReducers: ActionReducerMap<AppState> = {
   ui: ui.uiReducer,
   auth: auth.authReducer,
-  incomeExit: incomeExit.incomeExitReducer,
+  // incomeExit: incomeExit.incomeExitReducer,
 };

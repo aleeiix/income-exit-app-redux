@@ -1,3 +1,4 @@
+import { AppStateWithIncomeExit } from './../income-exit.reducer';
 import { IncomeExitTypeEnum } from './../../models/income-exit-type.enum';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
@@ -20,7 +21,7 @@ export class DetailComponent implements OnInit, OnDestroy {
   incomeExits: IncomeExit[] = [];
 
   constructor(
-    private _store: Store<AppState>,
+    private _store: Store<AppStateWithIncomeExit>,
     private _incomeExitService: IncomeExitService
   ) {}
 

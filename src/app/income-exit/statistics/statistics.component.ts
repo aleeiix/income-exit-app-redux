@@ -1,3 +1,4 @@
+import { AppStateWithIncomeExit } from './../income-exit.reducer';
 import { Component, OnInit } from '@angular/core';
 
 import { Store } from '@ngrx/store';
@@ -18,7 +19,7 @@ export class StatisticsComponent implements OnInit {
   totalIncome: number = 0;
   totalExit: number = 0;
 
-  constructor(private _store: Store<AppState>) {}
+  constructor(private _store: Store<AppStateWithIncomeExit>) {}
 
   ngOnInit(): void {
     this._store.select('incomeExit').subscribe(({ items }) => {
